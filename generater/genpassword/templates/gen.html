@@ -1,0 +1,119 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Password Generator</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+    <script src="{%static 'js/main.js' %}"></script>
+</head>
+
+<body class="bg-primary">
+
+    <div class="container">
+        <div class="row mt-5">
+            <div class="col-md-8 offset-md-2">
+
+                <div class="card">
+                    <div class="card-header shadow-sm bg-white">
+                        <h1 class="display-5 text-info text-primary"><i class="fas fa-check-double"></i> Password Generator</h1>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                <form action="{% url 'generate' %}" method="POST">
+                                    {% csrf_token %}
+                                    <div class="input-group">
+                                        <label for="inputEmail3" class="col-sm-2 col-form-label">Password</label>
+                                        {% if Password %}
+                                        <input type="text" class="form-control" id="myInput" name="content" readonly value="{{Password}}">
+                                        {% else %}
+                                        <input type="text" class="form-control" id="myInput" name="content" readonly value="">
+                                        {% endif %}
+                                        <div class="input-group-append text-info">
+                                            <span class="input-group-text bg-white py-0">
+                                                <button type="submit" class="btn btn-sm text-info"
+                                                    onclick="copyBoxText()" title="copy">
+                                                    <i class="far fa-clipboard"></i>
+                                                </button>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <div class="input-group">
+                                        <label for="pass-size" class="col-sm-2 col-form-label">Length</label>
+                                        <input type="number" class="form-control" id="pass-size" name="size" required>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-sm-2"></div>
+                                        <div class="col-sm-10">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="gridCheck1" name="gridCheck1">
+                                                <label class="form-check-label" for="gridCheck1">
+                                                    Include lowercase letters
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="gridCheck2" name="gridCheck2">
+                                                <label class="form-check-label" for="gridCheck2">
+                                                    Include uppercase letters
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="gridCheck3" name="gridCheck3">
+                                                <label class="form-check-label" for="gridCheck3">
+                                                    Include numbers
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="gridCheck4" name="gridCheck4">
+                                                <label class="form-check-label" for="gridCheck4">
+                                                    Include symbols
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                        If none of the check box is selected it will generate password of all character
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                          <span aria-hidden="true">&times;</span>
+                                        </button>
+                                      </div>
+
+                                    <div class="border border-light p-3 mb-4">
+                                        <div class="text-center">
+                                            <button type="submit" class="btn btn-primary">Generate password
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>
