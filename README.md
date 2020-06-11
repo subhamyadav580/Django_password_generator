@@ -9,4 +9,3 @@ User can select one or multiple of the following: `Include uppercase letters`, `
 By clicking the `Generate password` button, the user can see a password being generated
 User can click a `Copy to clipboard` button which will save the password to the clipboard
 
-<img src="Password Generator.png">
