@@ -1,7 +1,7 @@
 # Django_password_generator
 
 Generate passwords based on certain characteristics selected by the user.
-
+This Project is hosted on heroku <a herf="https://randompasswordgenerator.herokuapp.com/">https://randompasswordgenerator.herokuapp.com/</a>
 ## User Stories
 
 User can select the length of the generated password
